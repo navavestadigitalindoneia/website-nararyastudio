@@ -1,0 +1,9 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { ArrowUpRight, CheckCircle2 } from "lucide-react";
+
+export const metadata: Metadata = { title: "Custom Request", description: "Start a custom creative project with Nararya Studio." };
+
+export default function RequestPage() {
+  return <section className="page-section"><div className="container"><div className="page-kicker"><span className="eyebrow">NARARYA STUDIO / CUSTOM REQUEST</span><span className="eyebrow">LET'S BEGIN</span></div><div className="request-layout"><div><h1>Tell us what<br /><span>you're imagining.</span></h1><p className="section-lede">Share the outline of your idea. The request workflow will guide you through the brief, references, timeline, and quotation.</p><div className="request-steps"><div><CheckCircle2 size={17} /><span>Describe your idea and desired outcome</span></div><div><CheckCircle2 size={17} /><span>Our team reviews the scope and references</span></div><div><CheckCircle2 size={17} /><span>Receive a quotation before work begins</span></div></div></div><aside className="request-panel"><span className="eyebrow">REQUEST PORTAL</span><h2>Custom request intake</h2><p>The secure request API and customer account workflow are part of the next implementation phase. No request is submitted or stored from this preview yet.</p><div className="panel-status"><span className="status-dot muted" /> INTAKE API NOT CONFIGURED</div><Link className="button button-dark" href="/faq">Read project information <ArrowUpRight size={16} /></Link><small>Online request submission will be enabled after the secure intake service is implemented.</small></aside></div></div></section>;
+}
