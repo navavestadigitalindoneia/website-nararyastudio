@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   description:
     "Nararya Studio — digital product, creative design services, custom requests, and selected project work.",
   applicationName: "Nararya Studio",
-  metadataBase: new URL("https://nararyastudio.com"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"),
   openGraph: {
     title: "Nararya Studio — Digital Creative Studio",
     description: "Digital products and creative services by Nararya Studio.",

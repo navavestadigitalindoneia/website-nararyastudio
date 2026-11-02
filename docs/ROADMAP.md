@@ -1,27 +1,34 @@
 # Nararya Studio implementation roadmap
 
-This roadmap follows the supplied Nararya Studio master specification. A visible page is not considered a completed business feature: each module must be connected, authorized, persisted, and tested.
+This roadmap follows the supplied master specification. A visible page is not considered a completed business feature: each module must be connected, authorized, persisted, and tested.
 
-## Phase 1 — Foundation (started)
+## Phase 1 — Foundation (implemented in branch; verification pending)
 
 - [x] Next.js App Router and TypeScript project structure
 - [x] Responsive visual foundation and navigation
 - [x] Public homepage, store shell, services, request information, portfolio, journal, FAQ
 - [x] Reduced-motion support
-- [x] No fabricated product prices, inventory, orders, reviews, or portfolio entries
-- [ ] Install and verify dependencies in a runtime environment
+- [x] No fabricated catalog prices, sales, orders, reviews, or portfolio records
+- [ ] Install and verify dependencies in CI
 
-## Phase 2 — Data and identity
+## Phase 2 — Core system (in progress)
 
-- [ ] PostgreSQL and Prisma schema/migrations
-- [ ] User registration, login, logout, password hashing, session rotation/revocation
-- [ ] Google OAuth authorization-code flow and state validation
-- [ ] Staff roles and backend RBAC
-- [ ] Audit log foundation
+- [x] PostgreSQL Prisma schema for the main business entities
+- [x] Explicit product category and lifecycle enums
+- [x] Database client singleton
+- [x] Database-aware health endpoint
+- [x] Initial security response headers
+- [x] GitHub Actions schema/typecheck/build workflow
+- [ ] Create and review initial database migration
+- [ ] Password hashing and secure session implementation
+- [ ] Registration, login, logout, and current-user APIs
+- [ ] Persistent rate limiting and CSRF/origin protections
+- [ ] Staff RBAC enforcement and audit event service
+- [ ] Automated tests for auth and authorization
 
 ## Phase 3 — Store and transactions
 
-- [ ] Product/category/version/license/compatibility management
+- [ ] Database-backed catalog, product details, versions, licenses, compatibility
 - [ ] Search, filters, pagination, bundles, wishlist, coupons
 - [ ] Server-authoritative cart and checkout pricing
 - [ ] Order and invoice records
