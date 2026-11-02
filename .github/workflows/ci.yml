@@ -1,0 +1,44 @@
+name: Nararya Studio CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main, "feat/**"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: nararya-studio-ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    name: Schema, typecheck and production build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install dependencies
+        run: npm install
+      - name: Validate Prisma schema
+        run: npm run prisma:validate
+        env:
+          DATABASE_URL: postgresql://ci:ci@localhost:5432/nararya_studio
+      - name: Generate Prisma Client
+        run: npm run prisma:generate
+        env:
+          DATABASE_URL: postgresql://ci:ci@localhost:5432/nararya_studio
+      - name: TypeScript check
+        run: npm run typecheck
+      - name: Production build
+        run: npm run build
+        env:
+          DATABASE_URL: postgresql://ci:ci@localhost:5432/nararya_studio
+          NEXT_PUBLIC_SITE_URL: https://example.invalid
