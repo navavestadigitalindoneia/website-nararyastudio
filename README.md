@@ -44,6 +44,17 @@ This repository is being built in phases. The first foundation commit establishe
 - Product delivery must use protected, expiring access.
 - Customer and admin data must be scoped by authenticated identity and backend authorization.
 
+## API foundation
+
+- `GET /api/health` — application and database connectivity status.
+- `POST /api/auth/register` — create a customer account with a scrypt password hash.
+- `POST /api/auth/login` — authenticate and issue a 7-day HTTP-only session cookie.
+- `POST /api/auth/logout` — revoke the current session.
+- `GET /api/auth/me` — return the authenticated user's safe profile.
+- `POST /api/auth/sessions/revoke-all` — revoke all sessions for the signed-in user.
+
+Authentication mutation routes enforce same-origin requests and database-backed rate limits. Production requires a `SESSION_SECRET` of at least 32 characters. The session cookie is HTTP-only, Secure in production, SameSite=Strict, and the database stores only a hash of the random session token.
+
 ## Production integrations not yet enabled
 
 Database and Prisma models, customer authentication, staff RBAC, checkout, Midtrans, private file storage, email/notification providers, AI assistant, CMS persistence, analytics, and end-to-end security tests remain planned work. Do not deploy this foundation as a live commerce system until those modules are implemented and verified.

@@ -20,10 +20,11 @@ This roadmap follows the supplied master specification. A visible page is not co
 - [x] Initial security response headers
 - [x] GitHub Actions schema/typecheck/build workflow
 - [ ] Create and review initial database migration
-- [ ] Password hashing and secure session implementation
-- [ ] Registration, login, logout, and current-user APIs
-- [ ] Persistent rate limiting and CSRF/origin protections
-- [ ] Staff RBAC enforcement and audit event service
+- [x] Password hashing with scrypt and secure database-backed sessions
+- [x] Registration, login, logout, current-user, and revoke-all session APIs
+- [x] Database-backed rate limiting and same-origin protections on auth mutations
+- [x] Staff role definitions and reusable role-check helpers
+- [ ] Staff RBAC enforcement on admin endpoints and audit event service
 - [ ] Automated tests for auth and authorization
 
 ## Phase 3 — Store and transactions
